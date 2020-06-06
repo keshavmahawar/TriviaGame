@@ -24,8 +24,8 @@ function fetchQuiz(){
             var response = JSON.parse( this.response )
             console.log( response )
             if( response.response_code == 0 ){
-                //localStorage('currentQuiz')
                 processQuestions( response.results )
+                window.location = "quiz.html"
             }else{
                 setInfo('Error in loading the questions')
             }
@@ -42,8 +42,8 @@ function fetchQuiz(){
 function processQuestions( questionList ){
     quiz = {}
     quiz.totalQuestions = questionList.length
-    quiz.currentQuestion = 0
-    quiz.questionList = questionList.map( processQuestion )
+    quiz.currentQuestionNo = 0
+    quiz.questionsList = questionList.map( processQuestion )
     console.log( quiz )
     localStorage.setItem( 'quiz', JSON.stringify( quiz ) )
 }
