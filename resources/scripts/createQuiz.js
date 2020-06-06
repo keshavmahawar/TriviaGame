@@ -41,9 +41,11 @@ function fetchQuiz(){
 //parsing the question into requred format
 function processQuestions( questionList ){
     quiz = {}
-    quiz.length = questionList.length
+    quiz.totalQuestions = questionList.length
     quiz.currentQuestion = 0
     quiz.questionList = questionList.map( processQuestion )
+    console.log( quiz )
+    localStorage.setItem( 'quiz', JSON.stringify( quiz ) )
 }
 
 function processQuestion( q ){

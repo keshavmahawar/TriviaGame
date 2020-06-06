@@ -1,0 +1,28 @@
+.input-group{
+    width: 600px;
+    display: flex;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+.input-group >label{
+   margin-right: 15px;
+}
+.input-group > select,input{ 
+   border: none;
+   border-radius: 10px;
+   font-family: 'Architects Daughter', cursive;
+   font-size: 20px;
+   padding: 15px;
+}
+.play-button{
+    background-color: red;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Architects Daughter', cursive;
+    margin: 10px auto;
+}

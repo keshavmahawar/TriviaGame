@@ -1,0 +1,55 @@
+body{
+    margin : 0px;
+    padding: 0px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 20px;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    /* border: 4px solid black; */
+    background: url('../images/bg1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+.main > div{
+    text-align: center;
+}
+.heading{
+    font-size: 120px;
+    font-weight: 900;
+    color: black;
+    font-family: 'Caveat', cursive;
+}
+.wrapper{
+    background-color:#ffffffaa;
+    width: max-content;
+    margin: 20px auto;
+    padding: 50px;
+    border-radius: 20px;
+}
+.play-button{
+    background-color: red;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Architects Daughter', cursive;
+    margin: 10px;
+}
+.play-button{
+    display: block;
+    background-color: red;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 10px;
+}
