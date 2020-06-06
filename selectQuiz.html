@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Quiz</title>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -34,31 +34,81 @@
             color: black;
             font-family: 'Caveat', cursive;
        }
-       .heading-wrapper{
+       .wrapper{
             background-color:#ffffffaa;
             width: max-content;
-            margin: 10% auto;
+            margin: 20px auto;
             padding: 50px;
             border-radius: 20px;
        }
        .play-button{
-            display: block;
             background-color: red;
             padding: 10px 20px;
             color: white;
-            text-decoration: none;
             border-radius: 20px;
             font-size: 40px;
             font-weight: bold;
+            font-family: 'Architects Daughter', cursive;
             margin: 10px;
+       }
+       .input-group{
+            width: 600px;
+            display: flex;
+            /* border: 1px solid black; */
+            margin: 10px auto;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+       }
+       /* .input-group > *{
+           flex: 1;
+           
+       } */
+       .input-group >label{
+           margin-right: 15px;
+       }
+       .input-group > select,input{ 
+           border: none;
+           border-radius: 10px;
+           font-family: 'Architects Daughter', cursive;
+           /* display: block; */
+           font-size: 20px;
+           padding: 15px;
        }
     </style>
 </head>
 <body>
     <div class="main">
-        <div class="heading-wrapper">
+        <div class="wrapper">
             <div class="heading">Select quiz type</div>
             <div class="form-wrapper">
+                <form action="">
+                    <div class="input-group">
+                        <label for="">No Of Questions</label>
+                        <input type="text" name="noQues" placeholder="max 50 questions">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Category</label>
+                        <select name="category">
+                            <option value="9">Genral Knowledge</option>
+                            <option value="10">Books</option>
+                            <option value="11">Films</option>
+                            <option value="12">Music</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="">Diffculty</label>
+                        <select name="Diffculty">
+                            <option value="9">Easy</option>
+                            <option value="10">Medium</option>
+                            <option value="11">Hard</option>
+                            <option value="12"></option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="submit" class="play-button" value="Let's the fun begin">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
