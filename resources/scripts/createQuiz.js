@@ -4,10 +4,68 @@ function fetchQuiz(){
     if( isNaN(this.noQues) || this.noQues > 50 ){
         setInfo('Enter no of questions correctly')
     }
+    
+    var apiUrl = "https://opentdb.com/api.php?"
+    var queryParameters = new URLSearchParams()
+
+    queryParameters.append('amount',this.noQues)    
+
+    this.category != 0 && queryParameters.append('category',this.category)
+    this.difficulty != 0 && queryParameters.append('difficulty',this.difficulty)
+    
+    apiUrl += queryParameters.toString()
+    console.log( apiUrl )
+
+    var xhr = new XMLHttpRequest()
+    xhr.open( 'GET', apiUrl )
+    xhr.send()
+    xhr.onload = function(){
+        if( this.status == 200){
+            var response = JSON.parse( this.response )
+            console.log( response )
+            if( response.response_code == 0 ){
+                //localStorage('currentQuiz')
+                processQuestions( response.results )
+            }else{
+                setInfo('Error in loading the questions')
+            }
+        }
+    }
+    var img = document.createElement('img')
+    img.setAttribute('src',"./resources/images/spin.gif")
+    setInfo('loading',img)
+    
 }
 
-function setInfo( info ){
+
+//parsing the question into requred format
+function processQuestions( questionList ){
+    quiz = {}
+    quiz.length = questionList.length
+    quiz.currentQuestion = 0
+    quiz.questionList = questionList.map( processQuestion )
+}
+
+function processQuestion( q ){
+    question = {}
+
+    question.category = q.category
+    question.text = q.question
+    var noOfOptions = q.incorrect_answers.length
+    // console.log( noOfOptions, q.incorrect_answers)
+    var randomInt = Math.floor( Math.random() * noOfOptions )
+    question.options = q.incorrect_answers
+    question.options.splice( randomInt, 0,q.correct_answer )
+    question.correctAnswer = randomInt
+    question.recordedAnswer = -1
+
+    return question
+}
+
+function setInfo( info, element ){
+    infoDiv.textContent = ""
     infoDiv.append( info )
+    element && infoDiv.append( element )
 }
 
 function formHandler( callback ){
