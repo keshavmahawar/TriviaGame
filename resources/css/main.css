@@ -5,12 +5,11 @@ body{
     font-size: 20px;
 }
 .main{
-    width: 100%;
-    height: 100%;
-    /* border: 4px solid black; */
+    min-width: 100vw;
+    min-height: 100vh;
     background: url('../images/bg1.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-position: center;
     display: flex;
     flex-direction: column;

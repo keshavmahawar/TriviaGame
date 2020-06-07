@@ -39,10 +39,44 @@ var quizController = function( qu ){
     function checkState(){
         console.log('stateChecked')
         if ( quiz.currentQuestionNo == quiz.totalQuestions ){
-            
-            window.location = 'result.html'
+            finishQuiz()
+            window.location = 'results.html'
         }
     }
+
+    function finishQuiz(){
+        var result = {}
+        var correctAnswersCount = 0
+        quiz.questionsList.forEach( function( question ){
+            if( question.correctAnswer == question.recordedAnswer ){
+                correctAnswersCount++
+            }
+        })
+
+        result.correctAnswersCount = correctAnswersCount
+        result.totalQuestions = quiz.totalQuestions
+        result.submittedOn = Date.now()
+        result.percentage = Math.floor( correctAnswersCount / result.totalQuestions * 100 )
+
+        var localResults = localStorage.getItem( 'results' )
+        
+        if( localResults ){
+            localResults = JSON.parse( localResults )
+            localResults.resultsList.push( result )
+            localResults.bestScore = Math.max( result.percentage , localResults.bestScore )
+        }else{
+            localResults = {}
+            localResults.resultsList = [ result ]
+            localResults.bestScore = result.percentage
+        }
+        localResults.lastQuizQuestions = quiz.questionsList
+
+        console.log( localResults )
+
+        localStorage.setItem('results', JSON.stringify(localResults) )
+        localStorage.removeItem('quiz')
+    }
+
     return{ getNextQuestion, getCurrentQuestion, submitAnswer }
 }
 
@@ -78,7 +112,7 @@ function submitOption(){
             target.style.background = "#ff000088"
         }
     
-        setTimeout(setQuestion,1500)
+        setTimeout(setQuestion,500)
         wrapper.removeEventListener( 'click', submitOption ) 
     }
     event.stopPropagation()    
@@ -110,11 +144,6 @@ function createQuizDom( question ){
         optionDiv.className = "option"
         mainDiv.append( optionDiv )
     })
-    // var testDiv = document.createElement('div')
-    // var str = '&quot;Flying Shuttle&quot;'
-
-    // testDiv.innerHTML = str
-    // mainDiv.append(testDiv)
     return mainDiv
 }
 
