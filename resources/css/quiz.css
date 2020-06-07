@@ -1,0 +1,18 @@
+.wrapper{
+    width: 80%;
+}
+.question{
+    /* background: url("https://previews.123rf.com/images/peekeedee1/peekeedee11811/peekeedee1181100258/112671590-old-vintage-paper-background-paper-texture.jpg"); */
+    background: radial-gradient(#ffffff00, #FFED4F);
+    /* background-color: #0000ff33; */
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 30px;
+}
+.option{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 25px;
+}
