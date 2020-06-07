@@ -12,7 +12,7 @@ Trivia game utilizing opentdb.com API
 ![Game screenshot 2](screenShots/s3.png)
 
 
-![Game screenshot 2](screenShots/s4.png)!
+![Game screenshot 2](screenShots/s4.png)
 
 ## Implementation
 
