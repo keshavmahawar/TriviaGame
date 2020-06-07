@@ -14,7 +14,6 @@ function fetchQuiz(){
     this.difficulty != 0 && queryParameters.append('difficulty',this.difficulty)
     
     apiUrl += queryParameters.toString()
-    console.log( apiUrl )
 
     var xhr = new XMLHttpRequest()
     xhr.open( 'GET', apiUrl )
@@ -22,7 +21,6 @@ function fetchQuiz(){
     xhr.onload = function(){
         if( this.status == 200){
             var response = JSON.parse( this.response )
-            console.log( response )
             if( response.response_code == 0 ){
                 processQuestions( response.results )
                 window.location = "quiz.html"
@@ -44,7 +42,6 @@ function processQuestions( questionList ){
     quiz.totalQuestions = questionList.length
     quiz.currentQuestionNo = 0
     quiz.questionsList = questionList.map( processQuestion )
-    console.log( quiz )
     localStorage.setItem( 'quiz', JSON.stringify( quiz ) )
 }
 
@@ -54,7 +51,6 @@ function processQuestion( q ){
     question.category = q.category
     question.text = q.question
     var noOfOptions = q.incorrect_answers.length
-    // console.log( noOfOptions, q.incorrect_answers)
     var randomInt = Math.floor( Math.random() * noOfOptions )
     question.options = q.incorrect_answers
     question.options.splice( randomInt, 0,q.correct_answer )
@@ -84,7 +80,7 @@ function formHandler( callback ){
             data[input.name] = input.value
         }
     })
-    console.log(data)
+
     callback.call( data )
 }
 

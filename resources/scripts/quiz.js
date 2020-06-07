@@ -1,6 +1,5 @@
 var wrapper
-var quizController = function( qu ){
-    var quiz = qu
+var quizController = function( quiz ){
     checkState()
     function getNextQuestion(){
         incrementState()
@@ -14,7 +13,6 @@ var quizController = function( qu ){
     function submitAnswer( optionNo ){
         var question = currentQuestion()
         question.recordedAnswer = optionNo
-        console.log( question )
         incrementState()
         return question.correctAnswer
     }
@@ -33,11 +31,15 @@ var quizController = function( qu ){
 
     function incrementState(){
         quiz.currentQuestionNo++
+        updateLocalState()
         checkState()
     }
 
+    function updateLocalState(){
+        localStorage.setItem('quiz', JSON.stringify(quiz) )
+    }
+
     function checkState(){
-        console.log('stateChecked')
         if ( quiz.currentQuestionNo == quiz.totalQuestions ){
             finishQuiz()
             window.location = 'results.html'
@@ -71,8 +73,6 @@ var quizController = function( qu ){
         }
         localResults.lastQuizQuestions = quiz.questionsList
 
-        console.log( localResults )
-
         localStorage.setItem('results', JSON.stringify(localResults) )
         localStorage.removeItem('quiz')
     }
@@ -90,7 +90,6 @@ function init(){
         return
     }   
     
-    console.log( JSON.parse(storage) )
     quizController = quizController( JSON.parse(storage) )
     setQuestion()
     
@@ -101,7 +100,6 @@ function submitOption(){
     if( target.className == "option"){
         var selectedOption = Number( target.id )
         var correctOption = quizController.submitAnswer( selectedOption )
-        console.log(selectedOption, correctOption)
 
         if ( correctOption == selectedOption ){
             target.style.background = "#00ff00aa"
@@ -112,7 +110,7 @@ function submitOption(){
             target.style.background = "#ff000088"
         }
     
-        setTimeout(setQuestion,500)
+        setTimeout(setQuestion,1500)
         wrapper.removeEventListener( 'click', submitOption ) 
     }
     event.stopPropagation()    
@@ -147,7 +145,6 @@ function createQuizDom( question ){
     return mainDiv
 }
 
-console.log( quizController )
 window.addEventListener('load',function(){
     wrapper = document.querySelector('.wrapper')
     init()

@@ -11,6 +11,7 @@
 }
 .input-group > select,input{ 
    border: none;
+   background-color: white;
    border-radius: 10px;
    font-family: 'Architects Daughter', cursive;
    font-size: 20px;

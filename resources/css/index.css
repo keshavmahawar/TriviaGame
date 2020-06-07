@@ -8,4 +8,16 @@
     font-size: 40px;
     font-weight: bold;
     margin: 10px;
-} 
+}
+.best-score{
+    background: url("../images/bg2.jpg");
+    background-size: cover;
+    border-radius: 5px;
+    margin: 20px auto;
+    background-position: center;
+    padding: 10px 20px;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    width: max-content;
+}

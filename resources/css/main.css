@@ -5,7 +5,6 @@ body{
     font-size: 20px;
 }
 .main{
-    min-width: 100vw;
     min-height: 100vh;
     background: url('../images/bg1.jpg');
     background-size: cover;
@@ -19,16 +18,16 @@ body{
     text-align: center;
 }
 .heading{
-    font-size: 120px;
+    font-size: 100px;
     font-weight: 900;
     color: black;
     font-family: 'Caveat', cursive;
 }
 .wrapper{
-    background-color:#ffffffaa;
+    background-color:#ffffffbb;
     width: max-content;
     margin: 20px auto;
-    padding: 50px;
+    padding: 40px;
     border-radius: 20px;
 }
 .play-button{
@@ -51,4 +50,18 @@ body{
     font-size: 40px;
     font-weight: bold;
     margin: 10px;
+}
+.nav-bar{
+    display: flex;
+    background-color: #ff0000aa;
+    justify-content: center;
+}
+.nav-bar > div{
+    margin:10px 20px;
+}
+.nav-bar a{
+    color: white;
+    font-weight: 900;
+    text-decoration:none;
+    font-size: 25px;
 }

@@ -14,7 +14,7 @@ function displayScore(){
     var list = results.resultsList
     var lastQuiz = results.lastQuizQuestions
     
-    headingDiv.innerText = "score : " + list[ list.length - 1 ].percentage +"%"
+    headingDiv.innerText = "Last quiz score : " + list[ list.length - 1 ].percentage +"%"
     wrapper.append( headingDiv )
     
     lastQuiz.forEach( createQuestionDOM )
